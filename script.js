@@ -22,6 +22,7 @@ $(".btn").on("click", (e)=>{
     checkPlayer();
 });
 
+
 function startGame(){
     nextSequence();
     gamePattern.forEach( (color,index) => {
@@ -34,19 +35,52 @@ function startGame(){
 $("body").on("keydown", (e) => {
     if(e.key.toLowerCase() === "a"){
         startGame()
+    } else {
+        console.log(e)
+        switch (e.key){
+            case "ArrowUp":
+                playTune("green");
+                registerGame("green");
+                checkPlayer();
+                break;
+            case "ArrowLeft":
+                playTune("red");
+                registerGame("red");
+                checkPlayer();
+                break;
+            case "ArrowDown":
+                playTune("yellow");
+                registerGame("yellow");
+                checkPlayer();
+                break;
+            case "ArrowRight":
+                playTune("blue");
+                registerGame("blue");
+                checkPlayer();
+                break;
+            case " ":
+                restart();
+                break;
+            default:
+                break;                    
+        }
     }
 });
 
-$(".restart").on("click", ()=> {
-    let q = prompt("This will restart the gmae. continue? y/n");
-    if(q == `y`) {
+$(".restart").on("click", restart );
+
+function restart(){
+    $(".restart").addClass("pressed");
+    setTimeout(()=>$(".restart").removeClass("pressed"),400);
+
+    let q = confirm("This will restart the gmae. continue?");
+    console.log(q)
+    if(q) {
         gamePattern.length = 0;
         playerArr.length = 0;
         startGame() 
     }  
-});
-
-
+}
 
 function registerGame(color){
     playerArr.push(color);

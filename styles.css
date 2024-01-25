@@ -14,7 +14,8 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 2fr 2fr 1fr;
   width: 45%;
   margin: auto;
 
@@ -30,14 +31,17 @@ body {
 }
 
 .restart {
-  grid-column: span 2;
-  background-color: aqua;
+  background-color: rgb(99, 99, 99);
   font-size: 1.6rem;
   font-family: 'Press Start 2P', cursive;
-  margin-top: 50px;
+  margin-top: 25px;
   border-radius: 20px;
   border: 5px solid black;
   transition: background-color 1s ease-in-out;
+  grid-area: 3/1/3/-1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .restart:active{
@@ -51,18 +55,27 @@ body {
 
 .red {
   background-color: red;
+  grid-area: 2 / 1;
 }
 
 .green {
   background-color: green;
+  grid-area: 1/2;
 }
 
 .blue {
   background-color: blue;
+  grid-area: 2/3;
 }
 
 .yellow {
   background-color: yellow;
+  grid-area: 2/2;
+}
+
+.btn:hover, .restart:hover{
+  cursor: pointer;
+  box-shadow: #f1f2f3;
 }
 
 .pressed, .btn:active {
