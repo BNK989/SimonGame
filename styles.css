@@ -1,6 +1,10 @@
 body {
   text-align: center;
   background-color: #011F3F;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #level-title {
@@ -9,7 +13,6 @@ body {
   margin:  20px 10px;
   color: #FEF2BF;
   line-height: 2;
-
 }
 
 .container {
@@ -17,14 +20,17 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 2fr 2fr 1fr;
   margin: auto;
-
+  max-width: 768px;
+  box-sizing: border-box;
+  aspect-ratio: 1/1;
 }
 
 .btn {
   margin: 10px;
-  display: inline-block;
-  height: 250px;
-  width: 250px;
+  min-height: 150px;
+  max-height: 250px;
+  min-width: 150px;
+  max-width: 250px;
   border: 10px solid black;
   border-radius: 20%;
   align-self: center;
@@ -93,8 +99,3 @@ body {
   color: green;
 }
 
-@media only screen and (min-width: 768px) {
-  .container {
-    width: 50%;
-  }
-}
