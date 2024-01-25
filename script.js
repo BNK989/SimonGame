@@ -24,6 +24,8 @@ $(".btn").on("click", (e)=>{
 
 
 function startGame(){
+    $(".restartBtn").text("Restart");
+
     nextSequence();
     gamePattern.forEach( (color,index) => {
         setTimeout(()=>{
@@ -36,7 +38,6 @@ $("body").on("keydown", (e) => {
     if(e.key.toLowerCase() === "a"){
         startGame()
     } else {
-        console.log(e)
         switch (e.key){
             case "ArrowUp":
                 playTune("green");
@@ -69,17 +70,24 @@ $("body").on("keydown", (e) => {
 
 $(".restart").on("click", restart );
 
+
 function restart(){
     $(".restart").addClass("pressed");
     setTimeout(()=>$(".restart").removeClass("pressed"),400);
+    let qReq;
+    $(".restartBtn").text() === "Start" ? qReq = false : qReq = true;
 
-    let q = confirm("This will restart the gmae. continue?");
-    console.log(q)
-    if(q) {
+    let qu = true;
+    if( qReq ) {
+        qu = confirm("This will restart the game. continue?");
+    }
+    
+    if(qu){
         gamePattern.length = 0;
         playerArr.length = 0;
-        startGame() 
+        startGame()
     }  
+    
 }
 
 function registerGame(color){
